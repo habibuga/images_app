@@ -4,3 +4,8 @@
 
 **/*.pyc
 db.sqlite3
+
+media/*
+.coverage
+
+.pytest_cache

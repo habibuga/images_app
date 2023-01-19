@@ -1,4 +1,5 @@
 import os
+import pytest
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 
@@ -15,11 +16,16 @@ def user(db, django_user_model):
 
 
 @pytest.fixture
-def image_handler(db):
+def image_handler(db, user):
     image = Image.objects.create(
         author=user,
-        url=SimpleUploadedFile('test_file', content=open(os.path.join('tests', 'test_image.jpg'), 'rb').read())
+        url=SimpleUploadedFile('test_file.jpg', content=open(os.path.join('tests', 'test_image.jpg'), 'rb').read())
     )
 
     yield image
     os.remove(os.path.join(BASE_DIR, 'media', 'images', 'test_file.jpg'))
+
+
+@pytest.fixture
+def image():
+    yield SimpleUploadedFile('test_file.jpg', content=open(os.path.join('tests', 'test_image.jpg'), 'rb').read())

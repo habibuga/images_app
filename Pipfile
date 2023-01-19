@@ -6,6 +6,11 @@ name = "pypi"
 [packages]
 django = "==4.1.5"
 djangorestframework = "==3.14.0"
+pytest = "*"
+pytest-django = "*"
+pytest-cov = "*"
+python-magic = "==0.4.27"
+pillow = "==9.4.0"
 
 [dev-packages]
 
